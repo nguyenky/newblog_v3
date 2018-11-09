@@ -1,0 +1,248 @@
+html {
+	font-family: arial !important;
+}
+a:hover {
+	text-decoration: none;
+}
+.navbar{
+	border-radius: 0px !important;
+	margin-bottom: 0px !important;
+}
+.navbar-inverse{
+	background: #000;
+}
+.navbar-brand{
+	padding-top: 10px !important;
+}
+.navbar-brand img{
+	border-radius: 100%;
+}
+.navbar-brand img:hover{
+	border-radius: 5px;
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.clear-fix{
+	clear: both;
+}
+.cats{
+	margin-left: 1px;
+}
+.navbar-header ul,li{
+}
+.notification{
+	margin-top: 1em;
+	margin-bottom: auto;
+}
+.icon-cats{
+	margin-right: 1em;
+}
+.myContent{
+	border: 1px solid #E6E6E6;
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px #888888;
+	padding: 1em 1em 1em 1em;
+}
+.avartar-profile-border{
+	width: 30%;
+	padding: 5px 5px 5px 5px;
+	border-radius: 3px 3px 3px 3px;
+}
+.avartar-profile{
+	padding: 5px 5px 5px 5px;
+	/*border: 1px solid #E6E6E6;*/
+	border-radius: 100%;
+}
+.avartar-profile img{
+	border: 1px solid #E6E6E6;
+	width: 100%;
+	height:100%;
+	border-radius: 100%;
+}
+.avartar-profile img:hover{
+	width: 100%;
+	height:100%;
+	border-radius: 10px 10px 10px 10px;
+}
+.title-upload-avatar{
+	margin-top: 10px;
+}
+.info-profile{
+	margin-top: 1em;
+	padding: 1em 1em 1em 1em;
+	width: 70%;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px 5px 5px 5px;
+}
+/* line 1, ../../source/scss/ng-img-crop.scss */
+img-crop {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+/* line 7, ../../source/scss/ng-img-crop.scss */
+img-crop canvas {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  /* mobile webkit */
+}
+.cropArea {
+    background: rgba(86, 226, 221, 0.1);
+    overflow: hidden;
+    /*width:100%;*/
+    height:350px;
+    margin: 20px 10px 10px 10px;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px 5px 5px 5px;
+	padding: 1em 1em 1em 1em;
+
+}
+form .progress {
+    line-height: 15px;
+}
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
+.upload{
+	/*width: 100%;*/
+	/*height: 20px;*/
+	margin: 20px 10px 10px 10px;
+	padding: 1em 1em 1em 1em;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px 5px 5px 5px;
+}
+.upload a:hover{
+	text-decoration: none;
+}
+.upload:hover{
+	/*background: #81efd4;*/
+	border-color: #81efd4;
+	cursor: pointer;
+}
+.sub{
+	margin-bottom: 10px;
+}
+.filter-category{
+	margin-left: 2%;
+	padding: 1em 1em 1em 0em;
+	height: 100%;
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #E6E6E6;
+}
+.list-news{
+	padding: 1em;
+}
+.create-news{
+	border: 1px solid #E6E6E6;
+	border-radius: 5px 5px 5px 5px;
+	padding: 1em;
+}
+.upload-select{
+	/*width: 100%;*/
+	/*height: 20px;*/
+	/*margin: 20px 10px 10px 10px;*/
+	padding: 0.5em 0em 0.5em 0em;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px 5px 5px 5px;
+
+}
+.upload-select:hover{
+	text-decoration: none;
+	border: 1px solid #337ab7;
+	cursor: pointer;
+	color: #337ab7;
+}
+.multi-image{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.del-multi{
+	left:-10px;
+}
+.del-multi:hover{
+	color: red;
+	cursor: pointer;
+}
+.list-posts {
+	position: relative;
+	display: inline;
+	/*width: 19%;*/
+
+}
+.list-posts img {
+  opacity: 1;
+  display: inline;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.list-posts:hover img {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.list-posts:hover .middle {
+  opacity: 1;
+  display: inline;
+}
+.middle {
+	display: none;
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.icon-picture {
+	/*display: inline;*/
+  /*background-color: #4CAF50;*/
+  color: black;
+  /*margin-left: 5px;*/
+  /*margin-right: 5px; */
+  font-size: 30px;
+  /*padding: 5px 5px 5px 5px;*/
+}
+.caption{
+	margin-bottom: 20px;
+}
+.notification-count{
+	font-size: 10px;
+    margin-left: -5px;
+    background: #e49c07;
+    padding: 2px;
+    color: black;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.multiupload{
+	margin-right: 10px;
+	/*width: px;*/
+	/*height: 30px;*/
+	position: relative;
+	display: inline;
+}
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}

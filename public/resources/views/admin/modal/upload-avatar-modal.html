@@ -1,0 +1,33 @@
+<form name="myForm" ng-controller="ProfileController">
+        <div class="upload text-center" ngf-select ng-model="picFile" accept="image/*">
+            <a  href="javascript:void(0);" >
+            Select your picture</a>
+        </div>
+        <div ng-show="croppedDataUrl"  ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea" required>
+            <!-- <img-crop   image="picFile  | ngfDataUrl"                 
+                        result-image="croppedDataUrl" 
+                        ng-init="croppedDataUrl=''"
+                        area-type="rectangle"
+                        aspect-ratio="1.8"
+            >
+            </img-crop> -->
+            <img-crop   image="picFile  | ngfDataUrl"                 
+                        result-image="croppedDataUrl" 
+                        ng-init="croppedDataUrl=''"
+            >
+            </img-crop>
+        </div>
+        <div class="crop-readly text-center" ng-show="croppedDataUrl">
+            <img ng-src="{{croppedDataUrl}}" />
+        </div>
+        <div class="sub" ng-show="croppedDataUrl">
+            <div class="form-group col-md-6">
+                <button type="button" class="btn btn-primary btn-block" ng-click="upload(croppedDataUrl, picFile.name)" ng-disabled="myForm.$invalid || dis" >Change avatar</button>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="button" class="btn btn-primary btn-block" ng-click="close()" >Cancel</button>
+            </div>
+        </div>
+        <div class="clear-fix"></div>
+
+</form>

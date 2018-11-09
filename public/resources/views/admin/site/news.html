@@ -1,0 +1,249 @@
+<div class="container-fluid">
+  <div class="text-right">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <div class="btn-group" uib-dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-primary btn-block" ng-click="showCreate()" > Add New Post</button>
+      </div>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 form-group">
+      <input class="form-control" id="" placeholder="Search..." type="text" ng-model="searchBox">
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 form-group">
+      <input class="form-control" id="" type="text" ng-model="showItem">
+    </div>
+
+  </div>
+  <div class="content" ng-show="!create">
+    <div class="left list-news" style="width: {{edit ? '20%' : '100%'}};">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th ng-show="!edit">ID</th>
+            <th width="30%">Name</th>
+            <th ng-show="!edit">Picture</th>
+            <th ng-show="!edit">Category</th>
+            <th ng-show="!edit">Like</th>
+            <th ng-show="!edit">Created</th>
+            <th ng-show="!edit">Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr dir-paginate="new in newsFilter| filter:searchBox | itemsPerPage: showItem" ng-click="showEdit(new)" >
+            <td ng-show="!edit" >{{new.id}}</td>
+            <td>{{new.name}}</td>
+            <td ng-show="!edit">
+                <img width="90px;" height="50px;" ng-src="{{new.url}}">
+            </td>
+            <td ng-show="!edit">{{new.category.name}}</td>
+            <td ng-show="!edit">{{new.likes}}</td>
+            <td ng-show="!edit">{{new.created_at}}</td>
+            <td ng-show="!edit">{{new.updated_at}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- BEGIN EDIT -->
+    <div class="right create-news" style="width: 80%;" ng-show='edit'>
+      <form>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" ng-model="new.name" class="form-control" id="" placeholder="Input field">
+              </div>
+                <div class="form-group">
+                    <label for="">Category</label>
+                    <ui-select ng-model="new.category"
+                           theme="bootstrap"
+                           title="Choose an address">
+                    <ui-select-match placeholder="Enter an category...">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="category in categories">
+                        <div ng-bind-html="trustAsHtml((category.name | highlight: $select.search))"></div>
+                    </ui-select-choices>
+                </ui-select>
+                </div>
+                <div class="form-group">
+                    <label for="">Preview</label>
+                    <textarea rows="7" class="form-control" ng-model='new.preview'></textarea>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group text-center">
+                        <div class="upload-select text-center" ngf-select ng-model="pic.picture" accept="image/*" ng-click="showCrop()">Select New Main Picture</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="!croppedDataUrl" >
+                    <div class="form-group text-center">
+                        <img src="{{new.url}}" width="170px" height="100px">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="croppedDataUrl" >
+                    <div class="text-center" >
+                        <img ng-src="{{croppedDataUrl}}" width="174px" height="100px" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div ng-show="isCropMain"  ngf-drop ng-model="pic.picture" ngf-pattern="image/*" class="cropArea" required>
+                        <img-crop   image="pic.picture  | ngfDataUrl"                 
+                                    result-image="croppedDataUrl" 
+                                    ng-init="croppedDataUrl=''"
+                                    area-type="rectangle"
+                                    aspect-ratio="1.74"
+                                    result-image-size='[{w: 870,h: 500}]'
+                        >
+                        </img-crop>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-primary" ng-show="isCropMain" ng-click="showCrop()" > OK </button>
+                </div>
+            </div>
+          </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label for="">Content</label>
+                        <textarea summernote rows="10"  class="form-control" ng-model="new.detail"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- <div 
+              id="dropzone2" 
+              class="dropzone sm" 
+              options="dzOptions" 
+              methods="dzMethods" 
+              callbacks="dzCallbacks" 
+              ng-dropzone>
+              
+            </div> -->
+             <!-- <div  ng-style="disableUpload">
+                <div style="text-align:center;" id="startUpload" ng-show="showBtns">
+                    <button ng-click="dzMethods.processQueue();">Start Uploading</button>
+                    <button ng-click="dzMethods.removeAllFiles();">Remove All Files</button>
+                    <button ng-click="dzMethods.removeFile(lastFile);">Remove Last File</button>
+                    <button ng-click="getDropzone();">Get getDropzone instance</button>
+                    <button ng-click="getFiles();">Get total files</button>
+                </div>
+
+                <div 
+                id="dropzone2" 
+                class="dropzone" 
+                options="dzOptions" 
+                methods="dzMethods" 
+                callbacks="dzCallbacks" 
+                ng-dropzone
+                > </div>
+            </div> -->
+          <!-- <input type="checkbox" name="" ng-model="showMulti" ng-change='openModal()'> -->
+          <div class="row">
+            <button style="float: right;" type="button" class="btn " ng-click="openModal()">Images</button>
+          </div>
+          <br />
+          
+                  
+          <div class="row">
+            <button type="button" class="btn btn-primary" ng-click='updateNews(croppedDataUrl)'>Update Post</button>
+            <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+            <button style="float: right;" type="button" class="btn btn-primary" ng-click="delNews()">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- END EDIT -->
+    <div class="clear-fix"></div>
+    <div class="text-center">
+      <dir-pagination-controls
+        max-size="4"
+        [direction-links=""]
+        [boundary-links=""]
+        [on-page-change=""]
+        [pagination-id=""]
+        [template-url=""]
+        [auto-hide=""]>
+      </dir-pagination-controls>
+    </div>
+  </div>
+  <!-- -------------------------- -->
+  <!-- BEGIN CREATE -->
+  <div class="content" ng-show="create">
+    <form name="createFrm">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" class="form-control" ng-model ='post.name' id="" placeholder="Enter your post name...">
+            </div>
+            <div class="form-group">
+              <label for="">Category</label>
+              <ui-select ng-model="post.category"
+                         theme="bootstrap"
+                         title="Choose an address">
+                <ui-select-match placeholder="Select or Search a category...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="category in categories">
+                  <div ng-bind-html="trustAsHtml((category.name | highlight: $select.search))"></div>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+            <div class="form-group">
+              <label for="">Preview</label>
+              <textarea rows="7" class="form-control" ng-model='post.preview'></textarea>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for=""></label>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="upload-select text-center" ngf-select ng-model="post.picture" accept="image/*" ng-click="showCrop()">Select Main Picture</div>
+              </div>
+              <!-- <input type="text" class="form-control" id="" placeholder="Input field"> -->
+            </div>
+            <br />
+            <div class="text-center" ng-show="croppedDataUrl" >
+                <img ng-src="{{croppedDataUrl}}"  width="174px" height="100px" />
+            </div>
+            <div ng-show="isCropMain"  ngf-drop ng-model="post.picture" ngf-pattern="image/*" class="cropArea" required>
+                <img-crop   image="post.picture  | ngfDataUrl"                 
+                            result-image="croppedDataUrl" 
+                            ng-init="croppedDataUrl=''"
+                            area-type="rectangle"
+                            aspect-ratio="1.74"
+                            result-image-size='[{w: 870,h: 500}]'
+                >
+                </img-crop>
+            </div>
+            <div>
+              <button class="btn btn-primary" ng-show="isCropMain" ng-click="showCrop()" > OK </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group" >
+                    <label for="">Content</label>
+                    <textarea summernote rows="10"  class="form-control" ng-model="post.detail" data-on-image-upload="imageUpload(files)"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+          <div class="form-group checkbox">
+            <label><input type="checkbox" ng-model="multiUpload" value="">Multi Image</label>
+          </div>
+        </div>
+        <div class="row">
+          <div ng-show="multiUpload">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div id="dropzone1"  class="dropzone" options="dzOptions" callbacks="dzCallbacks" ng-dropzone></div>
+              <button ng-click="getDropzone();">Get getDropzone instance</button>
+            </div>
+          </div>          
+        </div> -->
+        <div class="row">
+          <button type="button" class="btn btn-primary" ng-click='save(croppedDataUrl,picFile.name,post)' ng-disabled="">Create Post</button>
+          <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+        </div>

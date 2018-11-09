@@ -1,0 +1,64 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    
+        <ul class="nav navbar-nav left">
+            <li><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a></li>
+        </ul>
+        <div class="navbar-header right dropdown pull-right">
+            <a class="navbar-brand notification" href="javascript:void(0);" ><i class="fa fa-globe fa-lg " aria-hidden="true"></i><span class="notification-count" ng-show="countNoti">{{countNoti}}</span></a>
+
+            <!-- <a class="navbar-brand notification" href="javascript:void(0);"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i></a> -->
+
+            <a class="navbar-brand" href="javascript:void(0);" data-toggle="dropdown" ><img width="45px" height="45px" ng-src="{{avatar}}"></a>
+            <ul class="dropdown-menu right">
+              <li><a ui-sref="admin.profile"><i class="fa fa-cog" aria-hidden="true"></i> Profiles</a></li>
+              <li><a ng-click="logout()" href="javascript:void(0);"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="http://yesforme.esy.es">
+                        Yes !! For Me !!
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="admin.dashboard"><i class="fa fa-tachometer icon-cats" aria-hidden="true"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a ui-sref="admin.categories"><i class="fa fa-list-ul icon-cats" aria-hidden="true"></i> Categories</a>
+                </li>
+                <li>
+                    <a ui-sref="admin.news"><i class="fa fa-newspaper-o icon-cats" aria-hidden="true"></i> News</a>
+                </li>
+                <li>
+                    <a ui-sref="admin.posts"><i class="fa fa-picture-o icon-cats" aria-hidden="true"></i> Posts</a>
+                </li>
+                <li>
+                    <a ui-sref="admin.playlists"><i class="fa fa-music icon-cats" aria-hidden="true"></i> Playlists</a>
+                </li>
+                <li>
+                    <a ui-sref="admin.contact"><i class="fa fa-fax icon-cats" aria-hidden="true"></i> Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="full-height full-width" ui-view></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>

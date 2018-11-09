@@ -1,0 +1,87 @@
+
+<div class="myContent">
+	<div class="avartar-profile-border left">
+		<div class="avartar-profile left">
+			<img ng-src="{{avatar}}">
+			<div class="text-center title-upload-avatar"><i class="fa fa-camera" aria-hidden="true"></i>   <a href="javascript:void(0);" ng-click="openAnimalModal()">Change Avatar</a></div>
+		</div>
+		<div class="clear-fix"></div>
+		<form name ="admin">
+
+		<div class="form-group col-md-12">
+	      <label for="focusedInput">Email</label>
+	      <input class="form-control" id="" type="email" ng-model="userAdmin.email" required>
+	    </div>
+	    <div class="form-group col-md-12">
+	      <label for="focusedInput">Password</label>
+	      <input class="form-control" id="" type="password" ng-model="userAdmin.password" required>
+	    </div>
+	    <p ng-show="isMatch">Errrr</p>
+	    <div class="form-group col-md-12">
+			<button type="button" class="btn btn-primary btn-block" ng-click="updateAdmin()" ng-disabled="admin.$invalid" >Update User</button>
+	    </div>
+
+		</form>
+	</div>
+	<div class="right info-profile container">
+		<h3 class="text-center">My informations</h3>
+		<br />
+		<div class="form-group col-md-5">
+	      <label for="focusedInput">Name</label>
+	      <input class="form-control" id="" type="text" ng-model="profile.fullname">
+	    </div>
+	    <div class="form-group col-md-7">
+	      <label for="focusedInput">Email</i></label>
+	      <input class="form-control" id="focusedInput" ng-model="profile.email" type="text">
+	    </div>
+	    <div class="form-group col-md-8">
+	      <label for="focusedInput">Address</label>
+	      <input class="form-control" id="" type="text" ng-model="profile.address">
+	    </div>
+	    <div class="form-group col-md-4">
+	      <label for="focusedInput">Phone</i></label>
+	      <input class="form-control" id="focusedInput" type="text" ng-model="profile.phone">
+	    </div>
+	    <div class="form-group col-md-12">
+	      <label for="focusedInput">Description</i></label>
+	      <!-- <input class="form-control" id="focusedInput" type="text"> -->
+	      <textarea class="form-control" ng-model="profile.preview" rows=10></textarea>
+	    </div>
+	    <div class="form-group col-md-12">
+	      <label for="focusedInput">About</i></label>
+	      <textarea class="form-control" ng-model="profile.about" rows=10></textarea>
+	    </div>
+	    <div class="form-group col-md-12">
+			<button type="button" class="btn btn-primary btn-block" ng-click="save(profile)" >Update Profile</button>
+	    </div>
+	    <!-- <div class="form-group col-md-6">
+			<button type="button" class="btn btn-default btn-block">Button 2</button>
+	    </div> -->
+
+		<!-- <div class="input-group col-md-6 line">
+	      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	    </div>
+	    <div class="input-group col-md-6 line">
+	      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	    </div>
+	    <div class="input-group">
+	      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	    </div>
+	    <div class="input-group">
+	      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	    </div>
+	    <div class="input-group">
+	      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	    </div> -->
+		
+	</div>
+	<div class="clear-fix"></div>
+
+	
+	
+</div>

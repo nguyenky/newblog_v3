@@ -1,0 +1,46 @@
+<div id="content" class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+	<div class="row">
+		<article class="tg-post tg-audio-post" ng-repeat="post in posts | orderBy:'-id'">
+			<div class="audio">
+				<div ng-bind-html="trustAsHtml((post.preview))"></div>
+			</div>
+			<div class="tg-post-content">
+				<div class="post-meta category-name">
+					<span><a href="">Playlist</a></span>
+				</div>
+				<h3><a href="">{{post.name}}</a></h3>
+				<div class="post-meta">
+					<span class="date">{{post.created_at | amCalendar:referenceTime:formats}}</span>
+				</div>
+				<div class="description">
+					<div ng-bind-html="trustAsHtml((post.content))"></div>
+				</div>
+				<br />
+				<br />
+				<div class="tg-post-foot">
+					<ul class="post-social-icons">
+						<li><a href=""><i class="fa fa-facebook"></i></a></li>
+						<li><a href=""><i class="fa fa-twitter"></i></a></li>
+						<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+						<li><a href=""><i class="fa fa-tumblr"></i></a></li>
+						<li><a href=""><i class="fa fa-envelope-o"></i></a></li>
+					</ul>
+					<div class="post-meta pull-right">
+						<span class="tg-post-author">Post By : <a href="">Ng Ký Lê</a></span>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+	
+	<hr />
+	<div style=" clear:both;"></div>
+	<div class=" col-md-12 row">
+		<div class=" post-width site-post pull-left" ng-show="currentPage > 1">
+			<span class="older-post"><a href="" ng-click="previus()">newer post</a></span>
+		</div>
+		<div class=" post-width site-post pull-right" ng-show="currentPage !=lastPage">
+			<span class="older-post"><a href="" ng-click="loadMore()">older post</a></span>
+		</div>
+	</div>
+</div>

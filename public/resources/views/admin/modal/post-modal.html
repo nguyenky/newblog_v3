@@ -1,0 +1,53 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="upload text-center" ngf-select ng-model="picFile" accept="image/*">
+            <a  href="javascript:void(0);" >
+            Select your picture</a>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form name="myForm">
+        <div ng-show="croppedDataUrl"  ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea" required>
+                <!-- <img-crop   image="picFile  | ngfDataUrl"                 
+                            result-image="croppedDataUrl" 
+                            ng-init="croppedDataUrl=''"
+                            area-type="rectangle"
+                            aspect-ratio="1.8"
+                >
+                </img-crop> -->
+                <img-crop   image="picFile  | ngfDataUrl"                 
+                            result-image="croppedDataUrl" 
+                            ng-init="croppedDataUrl=''"
+                            aspect-ratio="1.7"
+                            area-type="rectangle"
+                            result-image-size="'max'"
+                >
+                </img-crop>
+            </div>
+            <div class="crop-readly text-center" ng-show="croppedDataUrl">
+                <img ng-src="{{croppedDataUrl}}"  width="50%" />
+            </div>
+
+            <div class="row">
+              <div class=" form-group col-md-12">
+                <label>Caption</label>
+                <textarea class="form-control" ng-model="post.caption"></textarea>
+              </div>
+            </div>
+
+            <div class="sub">
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="upload(croppedDataUrl, picFile.name,post)" ng-disabled="myForm.$invalid || dis" >Create Post</button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="close()" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+            </form>
+    </div>
+</div>

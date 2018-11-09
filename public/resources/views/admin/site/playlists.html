@@ -1,0 +1,50 @@
+<div class="container">
+  	<h3>My Playlist</h3>
+	<div class="text-right">
+		<div class="col-md-8">
+			
+		</div>
+		<div class="col-md-4">
+			<div class="btn-group" uib-dropdown is-open="status.isopen">
+				<button type="button" class="btn btn-primary btn-block" ng-click="showPlaylist(null)" > New Playlist</button>
+			</div> 
+			
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div class="body">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group" ng-show="show">
+			<label for="">Name</label>
+	      	<input class="form-control" id="" type="text" ng-model="playlist.name">
+	      	<label for="">Content</label>
+            <textarea rows="7" class="form-control" ng-model='playlist.content'></textarea>
+            <br />
+            <button class="btn btn-primary" ng-click="save()" > Submit </button>
+            <button class="btn btn-primary" ng-click="cancel()" > Cancel </button>
+	    </div>
+		<div ng-repeat="playlist in playlists">
+			<div class="text-center">
+				{{playlist.name}} <a href="" ng-click="showPlaylist(playlist)"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+			</div>
+			<div class="text-center">
+				<a href="" ng-click="deletePlaylist(playlist)">Delete</a>
+			</div>
+			<br />
+			<div class="text-center">
+				----------------------------------------------------
+			</div>
+			<br />
+
+			<div>
+				<div ng-bind-html="trustAsHtml((playlist.content))"></div>
+			</div>
+			<br />
+			<br />
+			<br />
+
+		</div>
+		<div class="text-center caption">
+		</div>
+</div>

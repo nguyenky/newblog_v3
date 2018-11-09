@@ -1,0 +1,41 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3>{{edit ? 'Edit' : 'Create'}} Category</h3>
+    </div>
+    <div class="modal-body">
+        <form name="myForm">
+            <div class="row">
+              <div class=" form-group col-md-12">
+                <label>Name</label>
+                <input type="text" class="form-control" ng-model="category.name" name="" required>
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="">Parent Category</label>
+                    <ui-select ng-model="category.has_parent"
+                           theme="bootstrap"
+                           title="Choose an address">
+                        <ui-select-match placeholder="Enter an category...">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="list in categories">{{list.name}}
+                            <div ng-bind-html="trustAsHtml((list.name | highlight: $select.search))"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="sub">
+                <div class="row">
+                    <div class=" form-group col-md-12">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="save()" ng-disabled="myForm.$invalid || dis" >{{edit ? 'Edit' : ' Create'}} Category</button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="close()" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+        </form>
+    </div>
+</div>
