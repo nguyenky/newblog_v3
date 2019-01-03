@@ -21,7 +21,6 @@ app.config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','Faceboo
                         .then(function() {
                             return $ocLazyLoad.load([
                                 'resources/assets/public/angularjs/controller/home-ctrl.js'
-                                
                             ]);
                         });
                 }]

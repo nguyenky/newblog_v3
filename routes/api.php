@@ -23,7 +23,7 @@ Route::group(['prefix'=>'auths','namespace'=>'API'],function(){
 // ADMIN
 Route::group(['prefix'=>'admin','middleware'=>'api.auth','namespace'=>'API'],function(){
 	// Profile / avatar
-	Route::resource('profiles', 'ProfileAPIController');
+	Route::resource('profiles', 'ProfileAPIController')->middleware('admin','user');
 	Route::post('uploadAvatar/{id}','ProfileAPIController@uploadAvatar');
 	//Category
 	Route::resource('categories', 'CategoryAPIController');
@@ -89,3 +89,5 @@ Route::group(['namespace'=>'API'],function(){
 	Route::resource('pictures', 'PictureAPIController');
 	Route::post('uploadImage/{id}','PictureAPIController@uploadImage');
 });
+
+Route::get('confirm','Controller@confirm');
